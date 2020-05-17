@@ -34,3 +34,19 @@ function () {
 		}
 	}
 }
+
+if(document.forms.newMovie){
+	document.forms.newMovie.addEventListener('submit', addNewMovie);
+	function addNewMovie(event){
+		event.preventDefault();
+		var formData = new formData(this);
+		doAjax({
+			method: 'POST',
+			url: 'logic/add_movie.php',
+			data: formData,
+			callback: function(response){
+				alert(response);
+			}
+		});
+	}
+}
