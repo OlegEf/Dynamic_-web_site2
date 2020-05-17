@@ -12,14 +12,13 @@
 			<a href="logic/logout.php">viiti ikaunta</a>
 			<br>
 			<h3>poslednii dobavl film</h3>
+    	<?php include_once 'logic/last_movie.php'; ?>
+		<hr>
+		<button type="button" id="showMore">pokat ehe</button>
+
     	<?php else: ?>
-    	<?php include_once 'parts/not_auth.php'; ?>
+	    	<?php include_once 'parts/not_auth.php'; ?>
     	<?php endif; ?>
     </body>
-
-// $a =123;
-// define('LEET',1337);
-// $str1='hj';
-// $str2='ww';
-// $er=$str1 . ' ' .$str2;
-// echo $er;
+</html>
+<!-- 035 min pr part2 -->
