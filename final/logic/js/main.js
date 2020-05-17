@@ -2,7 +2,44 @@ document.addEventListener('DOMContentLoaded',
 function () {
 	var movieSection =
 	document.querySelector('#movies-sec');
-	if(movieSection){=
+	if(movieSection){
+		movieSection.addEventListener('click', sectionHandler);
+
+		function sectionHandler(event){
+			if(event.target.classList.contains('movie_watched')){
+				if(event.target.classList.contains('movie_del')){
+					event.preventDefault()
+					var movie ={
+					movie.container = event.target.parentNode;
+					movie.id = movie.container.getAttribute('data-movie-id');
+					movie.title = movie.container.firstElementChild.textContent;
+
+					doAjax({
+						method: 'POST',
+						url: 'logic/add_movie.php',
+						data: 'del_id=' + movie.id, 
+						contentType:
+						'application/x-www-form-urlencoded'
+						,
+						callback: delmovie
+					});
+
+					function delMovie(response){
+						if(response){
+							alert('Film'+ movie.title + 'was dellete sucsess!');
+							movie.container.nextElementSibling.remove()
+							movie.container.remove()
+						}else{
+							alert('during dellete film somthing wrong hapend');
+						}
+					}
+
+					}
+				}
+			}
+		}
+
+		=
 	var moreBtn = document.querySelector('#showMore');
 	if(moreBtn){
 		moreBtn.addEventListener('click',showMoreMovies);
@@ -50,3 +87,5 @@ if(document.forms.newMovie){
 		});
 	}
 }
+
+// 

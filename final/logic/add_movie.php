@@ -38,8 +38,15 @@ genre_id) VALUES' . implode($rows, ',');
 $stmt_genres = $pdo->prepare($sql_genres);
 $stmt_genres ->execute($genre_param);
 
-}catch(PDOExeption $e)
+$pdo->commit();
 
-function getNakedInput($input){
-	return htmlentities(trim($input)) ;
+echo 'new film add success!'
+
+
+}catch(PDOExeption $e)
+	echo 'During adding film apear eror:'.$e->getMessage();
+	$pdo->rollBack();
 }
+// function getNakedInput($input){
+// 	return htmlentities(trim($input)) ;
+// }
