@@ -13,18 +13,18 @@ $stmt->execute($params);
 
 $user = $stmt->fetch(PDO::FETCH_OBJ);
 
-		if($user){
-			if( password_verify($pwd, $user->password) ){
-				header('Location: admin.php');
-			}else{
-				echo 'nevernii login ili parol';
+	if($user){
+		if( password_verify($pwd, $user->password) ){
+			header('Location: admin.php');
 		}else{
 			echo 'nevernii login ili parol';
-		}
-
 	}else{
-		echo 'pogaluista sapolnite vse polya';
+		echo 'nevernii login ili parol';
 	}
+
+}else{
+	echo 'pogaluista sapolnite vse polya';
+}
 	// }else{
 	// 	echo 'nevernii login ili parol';
 	// }
